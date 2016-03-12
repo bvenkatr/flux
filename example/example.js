@@ -17,6 +17,15 @@ var counterStore = createStore({
 });
 
 
+var AnotherStore = createStore({
+	INIT: function (state) {
+	},
+	COUNTER_INCREMENT_NUM: function (state, num) {
+		console.log("I am fired too", num);
+	}
+});
+
+
 counterStore.onChange(() => {
 	console.log("New State is ", counterStore.getState());
 });

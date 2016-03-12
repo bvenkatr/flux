@@ -73,6 +73,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	});
 
+		var AnotherStore = (0, _flux.createStore)({
+			INIT: function INIT(state) {
+			},
+			COUNTER_INCREMENT_NUM: function COUNTER_INCREMENT_NUM(state, num) {
+				console.log("I am fired too", num);
+			}
+		});
+
 	counterStore.onChange(function () {
 		console.log("New State is ", counterStore.getState());
 	});
