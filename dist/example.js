@@ -54,15 +54,38 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _flux = __webpack_require__(1);
 
-	var _flux2 = _interopRequireDefault(_flux);
+	var counterStore = (0, _flux.createStore)({
+		INIT: function INIT(state) {
+			state.count = 0;
+		},
+		COUNTER_INCREMENT: function COUNTER_INCREMENT(state) {
+			state.count = state.count + 1;
+		},
+		COUNTER_INCREMENT_NUM: function COUNTER_INCREMENT_NUM(state, num) {
+			state.count = state.count + num;
+		},
+		COUNTER_DECREMENT: function COUNTER_DECREMENT(state) {
+			state.count = state.count - 1;
+		}
+	});
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	counterStore.onChange(function () {
+		console.log("New State is ", counterStore.getState());
+	});
 
-	(0, _flux2.default)();
+	_flux.dispatcher.subscribeAll(function (evtName, args) {
+		console.log("Some Event was Fired", evtName, args);
+	});
+
+	_flux.dispatcher.publish('COUNTER_INCREMENT');
+	_flux.dispatcher.publish('COUNTER_INCREMENT');
+	_flux.dispatcher.publish('COUNTER_INCREMENT_NUM', 3);
+	_flux.dispatcher.publish('COUNTER_DECREMENT');
+	_flux.dispatcher.publish('COUNTER_INCREMENT');
 
 /***/ },
 /* 1 */
