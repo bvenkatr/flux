@@ -87,6 +87,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	_flux.dispatcher.publish('COUNTER_DECREMENT');
 	_flux.dispatcher.publish('COUNTER_INCREMENT');
 
+	console.log("All Events", counterStore.getAllEvents());
+
 /***/ },
 /* 1 */
 /***/ function(module, exports) {

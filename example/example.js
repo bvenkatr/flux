@@ -31,3 +31,5 @@ dispatcher.publish('COUNTER_INCREMENT');
 dispatcher.publish('COUNTER_INCREMENT_NUM', 3);
 dispatcher.publish('COUNTER_DECREMENT');
 dispatcher.publish('COUNTER_INCREMENT');
+
+console.log("All Events", counterStore.getAllEvents());
