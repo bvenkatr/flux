@@ -73,16 +73,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	});
 
-		var AnotherStore = (0, _flux.createStore)({
-			INIT: function INIT(state) {
-			},
-			COUNTER_INCREMENT_NUM: function COUNTER_INCREMENT_NUM(state, num) {
-				console.log("I am fired too", num);
-			}
-		});
+	var AnotherStore = (0, _flux.createStore)({
+		INIT: function INIT(state) {},
+		COUNTER_INCREMENT_NUM: function COUNTER_INCREMENT_NUM(state, num) {
+			console.log("I am fired too", num);
+		}
+	});
 
 	counterStore.onChange(function () {
-		console.log("New State is ", counterStore.getState());
+		console.log("Part 1 Code ", counterStore.getState());
+	});
+
+	counterStore.onChange(function () {
+		console.log("Part 2 Code ", counterStore.getState());
 	});
 
 	_flux.dispatcher.subscribeAll(function (evtName, args) {

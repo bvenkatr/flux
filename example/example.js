@@ -16,7 +16,6 @@ var counterStore = createStore({
 	}
 });
 
-
 var AnotherStore = createStore({
 	INIT: function (state) {
 	},
@@ -27,7 +26,12 @@ var AnotherStore = createStore({
 
 
 counterStore.onChange(() => {
-	console.log("New State is ", counterStore.getState());
+	console.log("Part 1 Code ", counterStore.getState());
+});
+
+
+counterStore.onChange(() => {
+  console.log("Part 2 Code ", counterStore.getState());
 });
 
 

@@ -51,7 +51,7 @@ function createStore(exposedAPI) {
 			return storeBus.subscribe("onChange", cb);
 		},
 		getState(){
-			return state;
+			return util.clone(state);
 		},
 		getAllEvents(){
 			return eventList;

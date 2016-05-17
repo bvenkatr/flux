@@ -56,11 +56,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _util = __webpack_require__(4);
+	var _util = __webpack_require__(2);
 
 	var _util2 = _interopRequireDefault(_util);
 
-	var _eventbus = __webpack_require__(2);
+	var _eventbus = __webpack_require__(3);
 
 	var _eventbus2 = _interopRequireDefault(_eventbus);
 
@@ -117,7 +117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				return storeBus.subscribe("onChange", cb);
 			},
 			getState: function getState() {
-				return state;
+				return _util2.default.clone(state);
 			},
 			getAllEvents: function getAllEvents() {
 				return eventList;
@@ -134,6 +134,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ },
 /* 1 */,
 /* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	/**
+	 * Created by narendrasisodiya on 11/03/16.
+	 */
+
+	module.exports = {
+		clone: function clone(obj) {
+			return JSON.parse(JSON.stringify(obj));
+		},
+		mapObject: function mapObject(obj, cb) {
+			var a = [];
+			Object.keys(obj).map(function (key) {
+				a.push(cb(obj[key], key));
+			});
+			return a;
+		}
+	};
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -287,10 +310,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		);
 	});
 	;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -304,29 +327,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			module.webpackPolyfill = 1;
 		}
 		return module;
-	};
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	/**
-	 * Created by narendrasisodiya on 11/03/16.
-	 */
-
-	module.exports = {
-		clone: function clone(obj) {
-			return JSON.parse(JSON.stringify(obj));
-		},
-		mapObject: function mapObject(obj, cb) {
-			var a = [];
-			Object.keys(obj).map(function (key) {
-				a.push(cb(obj[key], key));
-			});
-			return a;
-		}
 	};
 
 /***/ }
